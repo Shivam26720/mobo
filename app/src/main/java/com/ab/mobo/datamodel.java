@@ -6,6 +6,9 @@ public class datamodel {
     public datamodel(){
 
     }
+
+
+
     public String getTitle() {
         return title;
     }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="190dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    app:cardCornerRadius="5dp"
+    android:layout_height="170dp">
+
+    <LinearLayout
+       android:layout_width="180dp"
+       android:orientation="vertical"
+       android:layout_height="match_parent">
+
+
+       <ImageView
+           android:layout_width="160dp"
+           android:layout_gravity="center"
+           android:id="@+id/imageviewgrid"
+           android:src="@drawable/profile"
+           android:layout_height="130dp" />
+
+       <TextView
+           android:id="@+id/parent_item_title"
+           android:layout_width="160dp"
+           android:textColor="@color/black"
+           android:layout_marginStart="5dp"
+           android:fontFamily="sans-serif"
+           android:textColorHint="@color/teal_200"
+           android:text="Mobile cover"
+           android:layout_gravity="center_horizontal"
+           android:layout_height="wrap_content"
+           android:padding="5sp"
+           android:textSize="17sp"
+           />
+
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="#2A535252" />
+   </LinearLayout>
+
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#2A535252" />
+
+
+
+
+
+</LinearLayout>

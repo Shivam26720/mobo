@@ -2,10 +2,13 @@ package com.ab.mobo;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -32,19 +36,20 @@ public class updateadapter extends FirebaseRecyclerAdapter<datamodel, updateadap
     public updateadapter(@NonNull FirebaseRecyclerOptions<datamodel> options) {
         super(options);
     }
-
+    int selectedPosition = 0;
+    int lastSelectedPosition = -1;
     @Override
     protected void onBindViewHolder(@NonNull updateadapter.viewholder holder, int position, @NonNull datamodel model) {
         holder.field.setText(model.getTitle());
-        int pos= (int) getItemId(position);
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+
+        holder.field.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.cardView.setCardBackgroundColor(Color.WHITE);
-                holder.field.setTextColor(Color.BLACK);
-              //  holder.field.setBackgroundColor(Color.WHITE);
 
-
+                    lastSelectedPosition = selectedPosition;
+                    selectedPosition = holder.getBindingAdapterPosition();
+                    notifyItemChanged(lastSelectedPosition);
+                    notifyItemChanged(selectedPosition);
 
             }
         });
@@ -60,11 +65,15 @@ public class updateadapter extends FirebaseRecyclerAdapter<datamodel, updateadap
     public class viewholder extends RecyclerView.ViewHolder {
 
       TextView field;
-        CardView cardView;
+     // ImageView imageView;
+     ConstraintLayout cardView;
         public viewholder(@NonNull View itemView) {
             super(itemView);
             field=itemView.findViewById(R.id.textviewdesign);
             cardView=itemView.findViewById(R.id.carview);
+           // imageView=itemView.findViewById(R.id.imageview);
         }
+
+
     }
 }
